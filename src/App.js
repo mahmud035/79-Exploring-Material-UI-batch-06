@@ -1,7 +1,16 @@
-import { Avatar, Button, Typography } from '@mui/material';
+import { Avatar, Button, Rating, Typography } from '@mui/material';
 import './App.css';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import { useState } from 'react';
+import TextField from '@mui/material/TextField';
 
 function App() {
+  const [rating, setRating] = useState(2);
+  console.log(rating);
+
   return (
     <div className="app">
       <div
@@ -23,9 +32,29 @@ function App() {
             John Doe
           </Typography>
         </div>
-        <Button variant="contained" fullWidth color="secondary">
+        <br />
+        <Button variant="contained" color="secondary">
           contained
         </Button>
+        &nbsp;
+        <InstagramIcon fontSize="large" color="success" />
+        <IconButton aria-label="delete">
+          <DeleteIcon fontSize="large" color="error" />
+        </IconButton>
+        &nbsp;
+        <Rating
+          name="simple-controlled"
+          value={rating}
+          onChange={(event, newValue) => {
+            setRating(newValue);
+          }}
+          sx={{
+            color: 'steelBlue',
+          }}
+        />
+        &nbsp;
+        <br /> <br />
+        <TextField id="outlined-basic" label="First Name" variant="outlined" />
       </div>
     </div>
   );
