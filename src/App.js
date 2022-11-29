@@ -1,4 +1,13 @@
-import { Avatar, Button, Rating, Typography } from '@mui/material';
+import {
+  Avatar,
+  Button,
+  createTheme,
+  Paper,
+  Rating,
+  Switch,
+  ThemeProvider,
+  Typography,
+} from '@mui/material';
 import './App.css';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import IconButton from '@mui/material/IconButton';
@@ -6,14 +15,37 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
+import { Box } from '@mui/system';
+import HeroCard from './components/HeroCard';
 
 function App() {
   const [rating, setRating] = useState(2);
-  console.log(rating);
+  const [darkMode, setDarkMode] = useState(false);
+  // console.log(rating);
+
+  const lightTheme = createTheme({
+    palette: {
+      mode: 'light',
+      primary: {
+        main: '#ff0000',
+      },
+    },
+  });
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#ffff00',
+      },
+    },
+  });
 
   return (
-    <div className="app">
-      <div
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <Switch onClick={() => setDarkMode(!darkMode)} />
+      <div className="app">
+        {/* <div
         style={{
           background: '#f7f7f7',
           width: '400px',
@@ -71,8 +103,27 @@ function App() {
         >
           Submit
         </Button>
+        <br /> <br />
+
+      </div> */}
+
+        <Box
+          sx={{
+            height: '100vh',
+            width: '100vw',
+            background: 'lightgray',
+            display: 'grid',
+            // justifyContent: 'center',
+            // alignItems: 'center',
+            placeItems: 'center',
+          }}
+        >
+          <HeroCard></HeroCard>
+
+          <Paper sx={{ width: '100px', height: '100px' }}></Paper>
+        </Box>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
