@@ -33,9 +33,7 @@ function App() {
           </Typography>
         </div>
         <br />
-        <Button variant="contained" color="secondary">
-          contained
-        </Button>
+        <Button variant="contained" color="secondary"></Button>
         &nbsp;
         <InstagramIcon fontSize="large" color="success" />
         <IconButton aria-label="delete">
@@ -55,6 +53,24 @@ function App() {
         &nbsp;
         <br /> <br />
         <TextField id="outlined-basic" label="First Name" variant="outlined" />
+        <br /> <br />
+        <Button
+          variant="contained"
+          sx={{
+            border: '2px solid red',
+            backgroundColor: 'green',
+            p: 2,
+            width: {
+              xs: 100,
+              sm: 200,
+              md: 300,
+              lg: 400,
+              xl: 500,
+            },
+          }}
+        >
+          Submit
+        </Button>
       </div>
     </div>
   );
